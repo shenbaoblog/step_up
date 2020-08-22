@@ -1,0 +1,36 @@
+.bl_drawer {
+  &_btn {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+  }
+  &_line {
+    display: block;
+    width: 35px;
+    height: 2px;
+    margin-bottom: 9px;
+    background-color: $cBlack;
+    transition: $transition;
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.js_drawerOpen {
+  background-color: $cBlack;
+  .bl_drawer {
+    &_line {
+      background-color: $cWhite;
+      &:nth-child(1) {
+        transform: translateY(11px) rotate(135deg);
+      }
+      &:nth-child(2) {
+        transform: translateX(-18px) scaleX(0);
+      }
+      &:nth-child(3) {
+        transform: translateY(-11px) rotate(-135deg);
+      }
+    }
+  }
+}

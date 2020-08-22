@@ -1,0 +1,71 @@
+// レイアウト幅
+
+$layoutSpWidth: 480px;
+$layoutTabWidth: 600px;
+$layoutTabLWidth: 960px;
+$layoutPcWidth: 1280px;
+// $layoutPcWidth: 1024px;
+// ブレークポイント
+$breakpoints: (
+  "sp": " (min-width: #{$layoutSpWidth})",
+  "tab": " (min-width: #{$layoutTabWidth})",
+  "tabL": " (min-width: #{$layoutTabLWidth})",
+  "pc": " (min-width: #{$layoutPcWidth})",
+);
+// メディアクエリー
+@mixin mq($breakpoint: sp) {
+  @media #{map-get($breakpoints, $breakpoint)} {
+    @content;
+  }
+}
+
+
+// コンテナ（SP）
+$contentsPaddingHeight_sp: 30px;
+$contentsPaddingWidth_sp: 10px;
+$contentsWidth_sp: 1200px + ($contentsPaddingWidth_sp * 2);
+
+// コンテナ（TAB）
+$contentsPaddingHeight_tab: 60px;
+$contentsPaddingWidth_tab: 10px;
+$contentsWidth_tab: 1200px + ($contentsPaddingWidth_tab * 2);
+
+// フォントサイズ（SP）
+$fontXxl_sp: 1.5rem; //24px
+$fontXl_sp: 1.125rem;  //18px
+$fontLg_sp: 1rem; //16px
+$fontMd_sp: .875rem; //14px
+$fontSm_sp: .75rem; //12px
+
+
+// フォントサイズ（TAB）
+$fontXxl_tab: 3rem; //48px
+$fontXl_tab: 1.875rem;  //30px
+$fontLg_tab: 1.25rem; //20px
+$fontMd_tab: 1rem; //16px
+$fontSm_tab: .875rem; //14px
+
+// カラー
+$cWhite: #fff;
+$cGrey: #c4c4c4;
+$cBgGrey: #f8f8f8;
+$cBlack: #333;
+$cBrown: #421f15;
+$cRed: #f00;
+$cOrange: #ff993c;
+$cBlue: #00f;
+$cGreen: #00c542;
+$cOpacityWhite: rgba(255, 255, 255, .6);
+$cOpacityBlack: rgba(0, 0, 0, .8);
+
+// 影
+$cBoxShadow: 0 0 5px $cGrey;
+$cHeaderBoxShadow: 0 8px 8px -8px rgba(63, 45, 45, .637);
+$cBtnShadow: 5px 5px 10px 0 rgba(0, 0, 0, .5);
+
+// transition
+$transitionOpacity: .8;
+$transition: .3s;
+
+// border-radius
+$border-radius: 5px;

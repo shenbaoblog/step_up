@@ -1,0 +1,23 @@
+// フッター
+.ly_footer {
+  margin-bottom: 64px;
+  padding-top: $contentsPaddingHeight_sp;
+  padding-bottom: $contentsPaddingHeight_sp;
+  background-color: $cBlack;
+  &_inner {
+    padding: 0 68px;
+  }
+}
+@include mq("tab") {
+  .ly_footer {
+    margin-bottom: 0;
+  }
+}
+
+.el_footerCopyright {
+  display: block;
+  color: $cWhite;
+
+// font-size: $fontXs_sp;
+  text-align: center;
+}

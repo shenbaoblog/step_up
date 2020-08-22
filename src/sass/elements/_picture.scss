@@ -1,0 +1,77 @@
+@mixin picture() {
+  > img,
+  > [style*="background-image"] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  > img {
+    object-fit: cover;
+    object-position: center center;
+  }
+  > [style*="background-image"] {
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+}
+
+.el_picture10 {
+  position: relative;
+  padding-top: 10%;
+  overflow: hidden;
+
+@include picture();
+}
+
+.el_picture43 {
+  position: relative;
+  padding-top: 43%;
+  overflow: hidden;
+
+@include picture();
+}
+
+.el_picture50 {
+  position: relative;
+  padding-top: 50%;
+  overflow: hidden;
+
+@include picture();
+}
+
+.el_picture56 {
+  position: relative;
+  padding-top: 56.07235%;
+  overflow: hidden;
+
+@include picture();
+}
+
+.el_picture60 {
+  position: relative;
+  padding-top: 60%;
+  overflow: hidden;
+
+@include picture();
+}
+
+.el_picture72 {
+  position: relative;
+  padding-top: 72%;
+  overflow: hidden;
+
+@include picture();
+}
+
+.el_picture100 {
+  position: relative;
+  padding-top: 100%;
+  overflow: hidden;
+
+@include picture();
+}

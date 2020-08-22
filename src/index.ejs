@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <%# ##_headを読み込み## %>
+  <%- include('./_head.ejs', {CONFIG: config["index"]}); %>
+  <!-- <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "LocalBusiness",
+    "name": "西片貝接骨院",
+    "description":"肩こり、首こり、腰痛、頭痛等の痛み改善に定評のある接骨院。ヘッドマッサージによる頭痛改善。はり治療による便秘改善。美肌効果の高い美容鍼受け放題サービス有り。月曜～土曜10時～20時施術可（水曜10時～15時）。施術実績10,351人/10年以上、国家資格保有。",
+    "telephone": "027-212-2700", //電話番号
+    "url": "https://nishikatakai-sekkotuin.com/",
+    "priceRange":"100-10000", //平均的な予算
+    "sameAs":[
+      "https://twitter.com/nishiseko_jto"
+    ] ,
+    "image": [
+      "https://nishikatakai-sekkotuin.com/img/staff_img01.jpg",
+      "https://nishikatakai-sekkotuin.com/img/treatment_img03.jpg",
+      "https://nishikatakai-sekkotuin.com/img/patient_photo_img01.jpg"
+    ],
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "JP",
+      "postalCode": "371-0013",
+      "addressRegion": "群馬県",
+      "addressLocality": "前橋市西片貝町",
+      "streetAddress": "4-15-5 エルドラードハイツ103"
+    },
+    "openingHoursSpecification": [ //営業日と営業時間
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+        "月曜",
+        "火曜",
+        "水曜",
+        "木曜",
+        "金曜",
+        "土曜"
+    ],
+    "opens": "10:00", //開店時間
+    "closes": "20:00" //閉店時間
+    },
+    { //定休日
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+      "日曜",
+      "祝日"
+    ],
+    "opens": "00:00", //定休日のため開店時間は00:00
+    "closes": "00:00" //定休日のため閉店時間も00:00
+    }
+    ]
+  }
+  </script> -->
+</head>
+
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <!-- End Google Tag Manager (noscript) -->
+
+
+
+
+  <div id="global-container">
+    <div id="ly_container">
+      <div class="mobile-menu__cover"></div>
+      <div class="nav-trigger"></div>
+      <!-- HEADER -->
+      <%# ----------------_headerを読み込む---------------- %>
+      <%- include('./_header.ejs') %>
+      <!-- / HEADER -->
+
+      <div id="content">
+        <!-- hero -->
+        <%# ----------------_heroを読み込む---------------- %>
+        <%- include('./_hero.ejs') %>
+        <!-- / hero -->
+
+
+        <div id="main-content">
+          <!-- asideLeft -->
+          <%# ----------------_asideLeftを読み込む---------------- %>
+          <%- include('./_asideLeft.ejs') %>
+          <!-- / asideLeft -->
+
+          <main>
+            <section class="travel">
+              <div class="travel__inner">
+                <figure class="bl_coverSlide js_coverSlide_view  el_imgHoverDarken el_imgHoverZoom">
+                  <img class="bl_coverSide_img" src="./img/image-travel.jpg" alt="" />
+                </figure>
+                <div class="travel__texts appear left">
+                  <div class="travel__texts-inner">
+                    <div class="travel__title main-title item">
+                      <span class="purple">Travel</span>
+                      <span>the world</span>
+                    </div>
+                    <div class="travel__sub sub-title item">世界中を旅しよう</div>
+                    <div class="travel__description item">
+                      <p>
+                        世界１５０ヶ国で<br />利用できる民泊サービスです。
+                      </p>
+                      <p>あなたの望む宿がきっと見つかります。</p>
+                    </div>
+                    <div class="travel__btn item">
+                      <button class="el_btn el_btn__slideLeft">もっと詳しく</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <section class="houses">
+              <div>
+                <h2 class="main-title bl_animationTxt js_animationTxt">
+                  Find Your House
+                </h2>
+                <h2 class="main-title bl_tweenAnimationTxt js_tweenAnimationTxt js_intersectionObserver">
+                  Find Your House aaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaa
+                </h2>
+                <h2 class="main-title bl_tweenAnimationTxt js_tweenAnimationTxt js_intersectionObserver">
+                  Find Your House aaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaa
+                </h2>
+                <h2 class="main-title bl_tweenAnimationTxt js_tweenAnimationTxt js_intersectionObserver">
+                  Find Your House aaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaa
+                </h2>
+                <button id="id_btnAnimation">Animation</button>
+                <p class="sub-title bl_animationTxt">お気に入りの宿泊先を見つけましょう</p>
+              </div>
+              <button onclick="document.querySelector('.bl_appear').classList.toggle('js_appear_view')">appear</button>
+              <div class="houses__inner">
+
+                <div class="houses__item">
+                  <div class="cover-slide hover-darken bl_appear bl_appear__left">
+                    <div class="bg-img-zoom img-bg50 bl_appear_item" style="background-image: url(./img/villa-1.jpg)">
+                    </div>
+                  </div>
+                  <p class="houses__title">House 1</p>
+                </div>
+
+                <div class="houses__item">
+                  <div class="cover-slide hover-darken">
+                    <div class="bg-img-zoom img-bg50" style="background-image: url(./img/villa-2.jpg)"></div>
+                  </div>
+                  <p class="houses__title">House 2</p>
+                </div>
+
+                <div class="houses__item">
+                  <div class="bl_coverSlide js_coverSlide_view el_imgHoverDarken el_imgHoverZoom el_picture50">
+                    <div class="bl_coverSlide_img" style="background-image: url(./img/villa-3.jpg)"></div>
+                  </div>
+                  <p class="houses__title">House 3</p>
+                </div>
+
+                <div class="houses__item">
+                  <div class="cover-slide hover-darken">
+                    <div class="bg-img-zoom img-bg50" style="background-image: url(./img/villa-4.jpg)"></div>
+                  </div>
+                  <p class="houses__title">House 4</p>
+                </div>
+                <div class="houses__item">
+                  <div class="cover-slide hover-darken">
+                    <div class="bg-img-zoom img-bg50" style="background-image: url(./img/villa-5.jpg)"></div>
+                  </div>
+                  <p class="houses__title">House 5</p>
+                </div>
+                <div class="houses__item">
+                  <div class="cover-slide hover-darken">
+                    <div class="bg-img-zoom img-bg50" style="background-image: url(./img/villa-6.jpg)"></div>
+                  </div>
+                  <p class="houses__title">House 6</p>
+                </div>
+                <div class="houses__btn appear up">
+                  <button class="el_btn el_btn__3dCube slide-bg item">
+                    <span class="el_btn__3dCube_txt el_btn__3dCube_txt_hover">ホバー</span>
+                    <span class="el_btn__3dCube_txt el_btn__3dCube_txt_default">もっと詳しく</span></button>
+                </div>
+              </div>
+            </section>
+
+            <section class="popular">
+              <div class="popular__header">
+                <h2 class="main-title bl_animationTxt">Popular Place</h2>
+                <p class="sub-title bl_animationTxt">人気の観光地で宿泊先を見つけましょう</p>
+              </div>
+              <div class="popular__inner appear up">
+                <div class="popular__container">
+                  <div class="popular__item item">
+                    <div class="popular__img">
+                      <img src="./img/image-p1.jpg" alt="" />
+                    </div>
+                    <div class="popular__title">パリ</div>
+                  </div>
+                  <div class="popular__item item">
+                    <div class="popular__img">
+                      <img src="./img/image-p2.jpg" alt="" />
+                    </div>
+                    <div class="popular__title">ニューヨーク</div>
+                  </div>
+                  <div class="popular__item item">
+                    <div class="popular__img">
+                      <img src="./img/image-p3.jpg" alt="" />
+                    </div>
+                    <div class="popular__title">香港</div>
+                  </div>
+                  <div class="popular__item item">
+                    <div class="popular__img">
+                      <img src="./img/image-p4.jpg" alt="" />
+                    </div>
+                    <div class="popular__title">大阪</div>
+                  </div>
+                  <div class="popular__btn appear up">
+                    <button class="el_btn el_btn__3dClose item">一覧から探す</button>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+          </main>
+
+          <aside class="side right">
+            <div class="side__inner">
+              <span class="bl_animationTxt">&copy;Code Mafia</span>
+            </div>
+          </aside>
+
+        </div>
+
+      </div>
+
+      <div class="bl_threeDotSpinner">
+        <div class="bl_threeDotSpinner_bounce"></div>
+        <div class="bl_threeDotSpinner_bounce"></div>
+        <div class="bl_threeDotSpinner_bounce"></div>
+      </div>
+
+
+      <!-- FOOTER -->
+      <%# ----------------_footerを読み込む---------------- %>
+      <%- include('./_footer.ejs') %>
+      <!-- / FOOTER -->
+
+
+    </div>
+
+
+
+    <nav class="mobile-menu">
+      <div class="logo">
+        <img src="./img/logo.svg" alt="" class="logo__img" />
+        <span class="logo__stay">Stay</span>
+        <span class="logo__world">World</span>
+      </div>
+      <ul class="mobile-menu__main">
+        <li class="mobile-menu__item">
+          <a class="mobile-menu__link" href="#">
+            <span class="main-title">Our Service</span>
+            <span class="sub-title">サービスについて</span>
+          </a>
+        </li>
+        <li class="mobile-menu__item">
+          <a class="mobile-menu__link" href="#">
+            <span class="main-title">About Us</span>
+            <span class="sub-title">私たちについて</span>
+          </a>
+        </li>
+        <li class="mobile-menu__item">
+          <a class="mobile-menu__link" href="#">
+            <span class="main-title">Contact Us</span>
+            <span class="sub-title">コンタクト方法</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+
+
+  <!-- <script src="scripts/vendors/swiper.min.js"></script>
+  <script src="scripts/vendors/TweenMax.min.js"></script>
+  <script src="scripts/vendors/scroll-polyfill.js"></script>
+  <script src="scripts/libs/scroll.js"></script>
+  <script src="scripts/libs/text-animation.js"></script>
+  <script src="scripts/libs/hero-slider.js"></script>
+  <script src="scripts/libs/mobile-menu.js"></script>
+  <script src="scripts/main.js"></script> -->
+  <!-- バンドル -->
+  <script src="./js/bundle.js"></script>
+
+
+
+</body>
+
+</html>

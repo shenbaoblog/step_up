@@ -1,0 +1,71 @@
+<%
+  var _default = config['default'];
+  for ( var key in _default ) {
+     if ( !CONFIG[key]  ) { %>
+<p><%= key %>をdefaultに合わせました。</p>
+<%      CONFIG[key] = _default[key]
+    }
+  }
+%>
+
+<!-- <p>サイト名　　　　　　:　<%= CONFIG['siteName'] %></p>
+<p>タイトル　　　　　　:　<%= CONFIG['title'] %></p>
+<p>ディスクリプション　:　<%= CONFIG['description'] %></p>
+<p>キーワード　　　　　:　<%= CONFIG['keyword'] %></p>
+<p>ＵＲＬ　　　　　　　:　<%= CONFIG['url'] %></p>
+<p>ＯＧＰＩＭＧ　　　　:　<%= CONFIG['ogpImg'] %></p>
+<p>ＣＳＳパス　　　　　:　<%= CONFIG['cssPath'] %></p> -->
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="format-detection" content="email=no,telephone=no,address=no">
+
+<!-- Google Tag Manager -->
+<!-- End Google Tag Manager -->
+
+<!-- OGP設定 -->
+<!-- <meta property="og:url" content="https://nishikatakai-sekkotuin.com/" />
+<meta property="og:title" content="肩こり、腰痛等の痛み改善なら西片貝接骨院" />
+<meta property="og:type" content="website">
+<meta property="og:description"
+  content="ヘッドマッサージによる頭痛改善。はり治療による便秘改善。美容ばり受け放題サービス有り。月曜～土曜10時～20時施術可（水曜は~15:00）。施術実績10,351人/10年以上" />
+<meta property="og:image" content="https://nishikatakai-sekkotuin.com/ogp_img.jpg" />
+<meta property="og:site_name" content="肩こり、首こり、腰痛、頭痛等の痛み改善西片貝接骨院" />
+<meta property="og:locale" content="ja_JP" />
+<meta property="fb:app_id" content="appIDを入力" /> -->
+
+<!-- Twitterカード -->
+<!-- <meta name="twitter:card" content="Summary Card with Large Image" />
+<meta name="twitter:site" content="@nishiseko_jto" /> -->
+
+<!-- ディスクリプション -->
+<meta name="description" content="<%= CONFIG['description'] %>" />
+<!-- タイトル -->
+<title><%if(CONFIG["title"]){%><%=CONFIG['title']%>|<%=CONFIG["siteName"]%><%}else{%><%= CONFIG["siteName"]%><%}%></title>
+
+<!-- URLの正規化 -->
+<!-- <link rel="canonical" href="https://nishikatakai-sekkotuin.com/" /> -->
+
+<!-- ファビコン -->
+<!-- <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
+<link rel="manifest" href="./site.webmanifest">
+<link rel="mask-icon" href="./safari-pinned-tab.svg" color="#000000">
+<meta name="msapplication-TileColor" content="#000000">
+<meta name="theme-color" content="#ffffff"> -->
+
+<!-- RSS/Atomフィード -->
+<!-- <link rel="alternate" type="application/rss+xml" href="https://nishikatakai-sekkotuin.com/feed.rss" title="RSS2.0" />
+<link rel="alternate" type="application/atom+xml" href="https://nishikatakai-sekkotuin.com/feed.atom" title="Atom" /> -->
+
+<!-- Resource Hints設定 -->
+<!-- <link rel=”dns-prefetch” href=”//example.com”> -->
+<!-- <link rel=”preconnect” href=”//example.com”> -->
+<!-- <link rel=”prefetch” href=”//example.com/next-page.html” as=”html” crossorigin=”use-credentials”> -->
+<!-- <link rel=”prerender” href=”//example.com/next-page.html”> -->
+<!-- <link rel="dns-prefetch" href="//fonts.googleapis.com"> -->
+
+<!-- CSS読み込み -->
+<link rel="stylesheet" href="<%= CONFIG['cssPath'] %>">

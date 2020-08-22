@@ -1,0 +1,25 @@
+.hp_cRed {
+  color: $cRed !important;
+}
+
+.hp_bold {
+  font-weight: bold !important;
+}
+
+// spでのみ存在
+@include mq("tab") {
+  .hp_spExist {
+    display: none !important;
+  }
+}
+
+
+// tab以上で存在存在
+.hp_tabExist {
+  display: none !important;
+}
+@include mq("tab") {
+  .hp_tabExist {
+    display: block !important;
+  }
+}

@@ -1,0 +1,191 @@
+.el_btn {
+  display: inline-block;
+  padding: 10px 40px;
+  border: 1px solid $cBlack;
+  background-color: $cWhite;
+  color: $cBlack;
+  font-weight: bold;
+  text-decoration: none;
+  cursor: pointer;
+  transition: $transition;
+
+  &:hover {
+    border-color: $cBlack;
+    background-color: $cBlack;
+    color: $cWhite;
+  }
+  // 通常時に影をつける
+  &.el_btn__float {
+    box-shadow: $cBtnShadow;
+  }
+  // ホバー時に影をつける
+  &.el_btn__hoverFloat {
+    &:hover {
+      box-shadow: $cBtnShadow;
+    }
+  }
+  // 色の反転
+  &.el_btn__colorReversal {
+    border-color: $cBlack;
+    background-color: $cBlack;
+    color: $cWhite;
+    &:hover {
+      background-color: $cWhite;
+      color: $cBlack;
+    }
+  }
+  // 左からスライド
+  &.el_btn__slideLeft {
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    &::before {
+      display: inline-block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -10;
+      transform: translateX(-100%);
+      width: 100%;
+      height: 100%;
+      background-color: $cBlack;
+      content: "";
+      transition: $transition;
+    }
+    &:hover {
+      background-color: $cWhite; /* デフォルトカラーの打ち消し */
+      color: $cWhite;
+
+      &::before {
+        transform: none;
+      }
+    }
+  }
+  // 3dCover
+  &.el_btn__3dClose {
+    position: relative;
+    z-index: 10;
+    overflow: hidden;
+
+    perspective: 300px;
+    transform-style: preserve-3d;
+    &::before {
+      display: inline-block;
+      opacity: 0;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -10;
+      transform: rotateX(-90deg);
+      width: 100%;
+      height: 100%;
+      background-color: $cBlack;
+      content: "";
+      transition: $transition;
+
+      transform-origin: top center;
+    }
+    &:hover {
+      // el_btnの打ち消し
+      background-color: $cWhite;
+      color: $cWhite;
+      &::before {
+        opacity: 1;
+        transform: rotateX(0);
+      }
+    }
+  }
+  // 3dCover
+  &.el_btn__3dCover {
+    position: relative;
+    z-index: 1;
+
+    perspective: 300px;
+    transform-style: preserve-3d;
+
+    .el_btn_txt {
+      display: inline-block;
+      transform: translateZ(0px);
+    }
+    &::before {
+      display: inline-block;
+      opacity: 0;
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform: rotateX(90deg);
+      width: 100%;
+      height: 100%;
+      background-color: $cBlack;
+      content: "";
+      transition: $transition;
+
+      transform-origin: top center;
+    }
+    &:hover {
+      background-color: $cWhite; /* デフォルトカラーの打ち消し */
+      color: $cWhite;
+
+      &::before {
+        opacity: 1;
+        transform: none;
+      }
+    }
+  }
+  // 3dCube
+  &.el_btn__3dCube {
+    position: relative;
+    width: 150px;
+    height: 46px;
+    margin: 0 auto;
+
+//.el_btnの打ち消し
+    border: none;
+
+//.el_btnの打ち消し
+    background-color: transparent;
+
+    perspective: 300px;
+    transform-style: preserve-3d;
+
+    .el_btn__3dCube {
+      &_txt {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: 1px solid $cBlack;
+        line-height: 46px;
+        text-align: center;
+        transition: $transition;
+        &_hover {
+          transform: rotateX(90deg);
+          background-color: $cBlack;
+          color: $cWhite;
+
+          transform-origin: center center -23px;
+        }
+        &_default {
+          transform: rotateX(0);
+          background-color: $cWhite;
+          color: $cBlack;
+
+          transform-origin: center center -25px;
+        }
+      }
+    }
+    &:hover {
+      .el_btn__3dCube {
+        &_txt {
+          &_hover {
+            transform: rotateX(0);
+          }
+          &_default {
+            transform: rotateX(-90deg);
+          }
+        }
+      }
+    }
+  }
+}

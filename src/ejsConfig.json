@@ -1,0 +1,48 @@
+{
+  "default": {
+    "siteName": "サイト名",
+    "url": "デフォルトUrl",
+    "ogpImg": "デフォルトOgp",
+    "cssPath": "./css/style.css"
+  },
+  "index": {
+    "title": "このページのタイトルです。",
+    "description": "このページのディスクリプションです。",
+    "keyword": "TOP"
+  },
+  "news": {
+    "title": "NEWS",
+    "description": "NEWSのディスクリプションです。",
+    "keyword": "NEWS"
+  },
+  "news-single": {
+    "title": "NEWS-SINGLE",
+    "description": "NEWS-SINGLEのディスクリプションです。",
+    "keyword": "NEWS-SINGLE"
+  },
+  "story": {
+    "title": "STORY",
+    "description": "STORYのディスクリプションです。",
+    "keyword": "STORY"
+  },
+  "comments": {
+    "title": "COMMENTS",
+    "description": "COMMENTSのディスクリプションです。",
+    "keyword": "COMMENTS"
+  },
+  "cast": {
+    "title": "CAST",
+    "description": "CASTのディスクリプションです。",
+    "keyword": "CAST"
+  },
+  "inquiry": {
+    "title": "INQUIRY",
+    "description": "INQUIRYのディスクリプションです。",
+    "keyword": "INQUIRY"
+  },
+  "confirm": {
+    "title": "CONFIRM",
+    "description": "CONFIRMのディスクリプションです。",
+    "keyword": "CONFIRM"
+  }
+}

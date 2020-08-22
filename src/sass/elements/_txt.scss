@@ -1,0 +1,17 @@
+.el_description_txt {
+  margin-bottom: 10px;
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.el_indent_asterisk {
+  position: relative;
+  padding-left: 1.25em;
+  &::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: "※";
+  }
+}

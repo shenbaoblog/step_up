@@ -1,0 +1,129 @@
+// -------------------------------
+// cta
+.ly_cta {
+  background-color: $cOrange;
+}
+.bl_cta {
+  max-width: $contentsWidth_tab;
+  margin: 0 auto;
+  padding: 10px $contentsPaddingWidth_tab;
+
+  $tab_fvIcon_marginBottom: -10px;
+  &_txt {
+    color: $cWhite;
+    font-weight: bold;
+    line-height: 1.5;
+    text-align: center;
+  }
+  &_inner {
+    background-color: $cWhite;
+  }
+  // メイン部
+  &_group1 {
+    display: none;
+  }
+  &_group2 {
+    display: block;
+    flex: 1 1 100%;
+    flex-direction: column;
+    padding: 10px;
+    background-color: $cWhite;
+  }
+  &_symptoms {
+    margin-bottom: 10px;
+  }
+  &_call {
+    margin-bottom: 10px;
+  }
+  &_banner {
+    overflow: hidden;
+    border-radius: $border-radius;
+    box-shadow: $cBoxShadow;
+  }
+}
+@include mq("tab") {
+  .bl_cta {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    &_txt {
+      display: none;
+    }
+    &_inner {
+      display: flex;
+      align-items: center;
+      padding: 2.43902%;
+    }
+    &_group1 {
+      display: block;
+      flex: 1 1 100%;
+      margin-right: 2.43902%;
+    }
+    &_ttl {
+      margin-bottom: 10px;
+    }
+
+    // プロフィール写真部
+    &_profiles {
+      display: flex;
+      justify-content: center;
+      width: 80%;
+      margin: 0 auto 10px;
+    }
+    &_profile {
+      width: 31.707%;
+      margin-right: 2.43902%;
+      overflow: hidden;
+      &:nth-of-type(3n),
+      &:last-of-type {
+        margin-right: 0;
+      }
+    }
+    // 資格証明書部
+    &_profileImg {
+      height: 100%;
+
+      object-fit: cover;
+      object-position: center center;
+    }
+    &_qualificationArea {
+      width: 85%;
+      margin: 0 auto;
+      padding: 10px;
+      box-shadow: $cBoxShadow;
+      background-color: $cOpacityWhite;
+    }
+    &_qualifications {
+      display: flex;
+      justify-content: center;
+    }
+
+
+    &_qualification {
+      width: 31.707%;
+      margin-right: 2.43902%;
+      background-color: $cWhite;
+      &:nth-of-type(3n),
+      &:last-of-type {
+        margin-right: 0;
+      }
+    }
+    &_qualificationTtl {
+      line-height: 1;
+    }
+    &_group2 {
+      flex: 1 1 100%;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 0;
+    }
+    &_symptoms {
+      margin-bottom: 10px;
+    }
+    &_call {
+      margin-bottom: 20px;
+    }
+  }
+}
+.bl_safari {
+  font-size: $fontSm_sp;
+}
