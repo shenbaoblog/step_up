@@ -112,9 +112,9 @@ gulp.task("sass", () => {
       //    return err.message;
       //  })
       //)
+      .pipe(postcss([mqpacker({ sort: true })])) //sassでメディアクエリをネストして書いても、CSSに出力する際にまとめてくれる
       .pipe(postcss(postcssOption)) //ベンダープレフィックス自動付与のpostcssOptionの設定を取り込む
-      .pipe(postcss([cssdeclsort({ order: "smacss" })])) //CSSのプロパティの並び順をソートしてくれる（smacssが定義するレイアウトが最も重要な順）
-      .pipe(postcss([mqpacker()])) //sassでメディアクエリをネストして書いても、CSSに出力する際にまとめてくれる
+      // .pipe(postcss([cssdeclsort({ order: "smacss" })])) //CSSのプロパティの並び順をソートしてくれる（smacssが定義するレイアウトが最も重要な順）
       .pipe(gulp.dest("./dist/css", { sourcemaps: "." })) //sourcemapの書き出し
       //コンパイル完了通知
       .pipe(

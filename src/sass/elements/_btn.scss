@@ -14,17 +14,17 @@
     background-color: $cBlack;
     color: $cWhite;
   }
-  // 通常時に影をつける
+  // 通常時に影をつける；モディファイア
   &.el_btn__float {
     box-shadow: $cBtnShadow;
   }
-  // ホバー時に影をつける
+  // ホバー時に影をつける；モディファイア
   &.el_btn__hoverFloat {
     &:hover {
       box-shadow: $cBtnShadow;
     }
   }
-  // 色の反転
+  // 色の反転；モディファイア
   &.el_btn__colorReversal {
     border-color: $cBlack;
     background-color: $cBlack;
@@ -34,10 +34,10 @@
       color: $cBlack;
     }
   }
-  // 左からスライド
+  // 左からスライド；モディファイア
   &.el_btn__slideLeft {
     position: relative;
-    z-index: 1;
+    z-index: 10;
     overflow: hidden;
     &::before {
       display: inline-block;
@@ -53,7 +53,7 @@
       transition: $transition;
     }
     &:hover {
-      background-color: $cWhite; /* デフォルトカラーの打ち消し */
+      background-color: $cWhite; /* 打ち消し */
       color: $cWhite;
 
       &::before {
@@ -61,14 +61,13 @@
       }
     }
   }
-  // 3dCover
+  // 3dClose；モディファイア
   &.el_btn__3dClose {
     position: relative;
     z-index: 10;
-    overflow: hidden;
-
-    perspective: 300px;
     transform-style: preserve-3d;
+    perspective: 300px;
+    overflow: hidden;
     &::before {
       display: inline-block;
       opacity: 0;
@@ -77,17 +76,15 @@
       left: 0;
       z-index: -10;
       transform: rotateX(-90deg);
+      transform-origin: top center;
       width: 100%;
       height: 100%;
       background-color: $cBlack;
       content: "";
       transition: $transition;
-
-      transform-origin: top center;
     }
     &:hover {
-      // el_btnの打ち消し
-      background-color: $cWhite;
+      background-color: $cWhite; /* 打ち消し */
       color: $cWhite;
       &::before {
         opacity: 1;
@@ -95,13 +92,12 @@
       }
     }
   }
-  // 3dCover
+  // 3dCover；モディファイア
   &.el_btn__3dCover {
     position: relative;
-    z-index: 1;
-
-    perspective: 300px;
+    z-index: 10;
     transform-style: preserve-3d;
+    perspective: 300px;
 
     .el_btn_txt {
       display: inline-block;
@@ -114,16 +110,15 @@
       top: 0;
       left: 0;
       transform: rotateX(90deg);
+      transform-origin: top center;
       width: 100%;
       height: 100%;
       background-color: $cBlack;
       content: "";
       transition: $transition;
-
-      transform-origin: top center;
     }
     &:hover {
-      background-color: $cWhite; /* デフォルトカラーの打ち消し */
+      background-color: $cWhite; /* 打ち消し */
       color: $cWhite;
 
       &::before {
@@ -132,23 +127,18 @@
       }
     }
   }
-  // 3dCube
+  // 3dCube；モディファイア
   &.el_btn__3dCube {
     position: relative;
+    transform-style: preserve-3d;
+    perspective: 300px;
     width: 150px;
     height: 46px;
     margin: 0 auto;
+    border: none; /* 打ち消し */
+    background-color: transparent; /* 打ち消し */
 
-//.el_btnの打ち消し
-    border: none;
-
-//.el_btnの打ち消し
-    background-color: transparent;
-
-    perspective: 300px;
-    transform-style: preserve-3d;
-
-    .el_btn__3dCube {
+    .el_btn {
       &_txt {
         position: absolute;
         top: 0;
@@ -159,29 +149,27 @@
         line-height: 46px;
         text-align: center;
         transition: $transition;
-        &_hover {
+        &:nth-child(1) {
           transform: rotateX(90deg);
+          transform-origin: center center -23px;
           background-color: $cBlack;
           color: $cWhite;
-
-          transform-origin: center center -23px;
         }
-        &_default {
+        &:nth-child(2) {
           transform: rotateX(0);
+          transform-origin: center center -25px;
           background-color: $cWhite;
           color: $cBlack;
-
-          transform-origin: center center -25px;
         }
       }
     }
     &:hover {
-      .el_btn__3dCube {
+      .el_btn {
         &_txt {
-          &_hover {
+          &:nth-child(1) {
             transform: rotateX(0);
           }
-          &_default {
+          &:nth-child(2) {
             transform: rotateX(-90deg);
           }
         }

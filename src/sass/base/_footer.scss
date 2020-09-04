@@ -1,23 +1,43 @@
 // フッター
-.ly_footer {
-  margin-bottom: 64px;
-  padding-top: $contentsPaddingHeight_sp;
-  padding-bottom: $contentsPaddingHeight_sp;
-  background-color: $cBlack;
-  &_inner {
-    padding: 0 68px;
+.bl_footer {
+  padding: 60px 0;
+  .bl_logo {
+    font-size: 38px;
   }
 }
 @include mq("tab") {
-  .ly_footer {
+  .bl_footer {
     margin-bottom: 0;
+    .bl_logo {
+      justify-content: flex-start;
+    }
   }
 }
 
-.el_footerCopyright {
-  display: block;
-  color: $cWhite;
-
-// font-size: $fontXs_sp;
+.bl_footerNav {
+  justify-content: space-between;
+  align-items: center;
   text-align: center;
+
+@extend .bl_flex;
+
+  &_ul {
+    justify-content: space-between;
+
+@extend .bl_flex;
+  }
+  &_li {
+    margin: 10px;
+    & > a {
+      color: $cSubTitle;
+      text-decoration: none;
+    }
+  }
+}
+@include mq("tab") {
+  .bl_footerNav {
+    &_li {
+      margin: 10px 30px 10px 0;
+    }
+  }
 }

@@ -1,0 +1,21 @@
+.el_beforeIcon {
+  position: relative;
+  &::before {
+    position: absolute;
+    top: 50%;
+    left: -20px;
+    transform: translateY(-50%);
+    width: 1em;
+    height: 1em;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    content: "";
+  }
+  &.el_beforeIcon__twitter::before {
+    background-image: url(../img/twitter.svg);
+  }
+  &.el_beforeIcon__facebook::before {
+    background-image: url(../img/facebook.svg);
+  }
+}

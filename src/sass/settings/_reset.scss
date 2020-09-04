@@ -200,7 +200,8 @@ body,
 textarea,
 input {
   color: $cBlack;
-  font-family: "Noto Sans JP Compressed","Hiragino Kaku Gothic ProN","Meiryo", sans-serif;
+  font-family: "myKameron", "Noto Sans JP Compressed",
+  "Hiragino Kaku Gothic ProN", "Meiryo", sans-serif;
   line-height: 1.5;
 }
 
@@ -244,3 +245,18 @@ body {
 
 //   src: url("../font/NotoSansJP-Black.woff") format("woff");
 // }
+
+@font-face {
+  font-family: "myKameron";
+  font-weight: 400;
+  font-style: normal;
+
+  src: url("../font/Kameron-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: "myKameron";
+  font-weight: 700;
+  font-style: normal;
+
+  src: url("../font/Kameron-Bold.ttf") format("truetype");
+}

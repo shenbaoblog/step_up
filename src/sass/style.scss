@@ -1,25 +1,29 @@
 @import "./settings/variables";
 @import "./settings/reset"; // css-wipe-Reset-css
-@import "./settings/scroll-hint";
-@import "./settings/swiper.min";
 @import "./settings/mixin";
+
+@import "./venders/scroll-hint";
+@import "./venders/swiper.min";
+@import "./venders/pace";
 
 @import "./elements/heading";
 @import "./elements/txt";
 @import "./elements/btn";
+@import "./elements/icon";
 @import "./elements/picture";
 @import "./elements/img";
+@import "./elements/fontSize";
 
-@import "./blocks/loader";
+@import "./blocks/pageLoader";
 @import "./blocks/appear";
 @import "./blocks/coverSlide";
+@import "./blocks/drawerMenu";
 @import "./blocks/col";
-@import "./blocks/cta";
 
-@import "./base/layout";
 @import "./base/header";
 @import "./base/main";
 @import "./base/footer";
+@import "./base/aside";
 
 @import "./helpers/helpers";
 

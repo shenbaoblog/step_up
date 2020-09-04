@@ -1,0 +1,39 @@
+.bl_side {
+  display: none;
+  position: fixed;
+  top: 70%;
+  transform: translateY(-50%);
+  transition: $transition ease-in;
+  &_txt {
+    margin-right: 40px;
+    color: $cBlack;
+    text-decoration: none;
+    vertical-align: middle;
+  }
+  &.bl_side__left {
+    left: -50px;
+    &.js_inView {
+      left: 50px;
+    }
+    & .bl_side_inner {
+      transform: rotate(-90deg);
+      transform-origin: top left;
+    }
+  }
+  &.bl_side__right {
+    right: -50px;
+    &.js_inView {
+      right: 50px;
+    }
+    & .bl_side_inner {
+      transform: rotate(90deg);
+      transform-origin: top right;
+    }
+  }
+}
+
+@include mq("pc") {
+  .bl_side {
+    display: block;
+  }
+}

@@ -1,22 +1,11 @@
-.el_h2 {
-  margin-bottom: 10px;
-  font-size: $fontXxl_sp;
+.el_mainTitle {
   font-weight: bold;
-  text-align: center;
-}
-@include mq("tab") {
-  .el_h2 {
-    margin-bottom: 20px;
-    font-size: $fontXxl_tab;
-  }
+
+@extend .el_fontLg;
 }
 
-.el_h3 {
-  font-size: $fontXl_sp;
-  font-weight: bold;
-}
-@include mq("tab") {
-  .el_h3 {
-    font-size: $fontXl_tab;
-  }
+.el_subTitle {
+  color: $cSubTitle;
+
+@extend .el_fontSm;
 }

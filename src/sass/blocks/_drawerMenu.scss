@@ -1,0 +1,114 @@
+// -------------------------------
+// ドロワーボタン
+.bl_drawer {
+  &_btn {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+  }
+  &_line {
+    display: block;
+    width: 35px;
+    height: 2px;
+    margin-bottom: 9px;
+    background-color: $cBlack;
+    transition: $transition;
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.js_drawerOpen__container {
+  .bl_drawer {
+    &_line {
+      &:nth-child(1) {
+        transform: translateY(11px) rotate(135deg);
+      }
+      &:nth-child(2) {
+        transform: translateX(-18px) scaleX(0);
+      }
+      &:nth-child(3) {
+        transform: translateY(-11px) rotate(-135deg);
+      }
+    }
+  }
+}
+
+// -------------------------------
+// ドロワーメニュー
+.bl_drawerMenu {
+  position: fixed;
+  top: 60px;
+  right: 0;
+  width: 300px;
+  .bl_logo {
+    justify-content: flex-start;
+    padding: 0 40px;
+    font-size: 38px;
+  }
+  &_ul {
+    transform-style: preserve-3d;
+    perspective: 2000px;
+    padding: 0;
+  }
+  &_li {
+    display: block;
+    transform: translate3d(0, 0, -1000px);
+    padding: 0 40px;
+    transition: transform .3s, opacity .2s;
+    // opacity: 0;
+  }
+  &_link {
+    display: block;
+    margin-top: 30px;
+    color: $cBlack;
+    text-decoration: none;
+  }
+  &_mainTitle {
+    font-size: 25px;
+    font-weight: bold;
+  }
+  &_subTitle {
+    display: block;
+    color: $cGrey;
+    font-size: 14px;
+  }
+}
+// メニューオープン時
+.js_drawerOpen__container {
+  .bl_drawerMenu {
+    &_li {
+      opacity: 1;
+      transform: none;
+      @for $i from 1 through 5 {
+        &:nth-child(#{$i}) {
+          transition-delay: $i * .07s;
+        }
+      }
+    }
+  }
+}
+
+// -------------------------------
+// ドロワーカバー
+.bl_drawerMenuCover {
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, .3);
+  cursor: pointer;
+  transition: $transition;
+}
+// メニューオープン時
+.js_drawerOpen__container {
+  .bl_drawerMenuCover {
+    visibility: visible;
+    opacity: 1;
+  }
+}

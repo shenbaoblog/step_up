@@ -1,4 +1,71 @@
 // -------------------------------
+// 共通class
+.bl_flex {
+  display: flex;
+  flex-direction: column;
+}
+@include mq("tab") {
+  .bl_flex {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}
+
+// -------------------------------
+// 全体レイアウト
+.ly_container {
+  &_inner {
+    position: relative;
+    z-index: 20;
+    background-color: $cWhite;
+    transition: all $transition;
+  }
+}
+
+.js_drawerOpen__container {
+  .ly_container {
+    &_inner {
+      transform: translate(-300px, 60px);
+      box-shadow: 0 8px 40px -10px .8 (0, 0, 0, .8);
+    }
+  }
+}
+
+// -------------------------------
+// 横幅調整
+.ly_contentWidth {
+  width: 90%;
+  max-width: $contentMaxWidth;
+  margin: 0 auto;
+}
+
+// -------------------------------
+// コンテンツ両サイドのasideが後ろにまわらないように、ローカルスタックコンテキスの形成
+.bl_mainContent {
+  position: relative;
+  z-index: 0;
+}
+// 両サイドのasideより背面にする
+main {
+  position: relative;
+  z-index: -10;
+}
+
+// -------------------------------
+// ロゴ
+.bl_logo {
+  display: flex;
+  justify-content: center;
+  font-size: 42px;
+  &_img {
+    width: .7em;
+  }
+  &_world {
+    color: $cWineRed;
+  }
+}
+
+// -------------------------------
 // ヒーロースライダー（スワイパー）
 .swiper {
   // &-container {
@@ -12,9 +79,8 @@
       width: 100%;
       height: 100%;
       max-height: 100%;
-      transition: 1.9s;
-
       object-fit: cover;
+      transition: 1.9s;
     }
     &::after {
       position: absolute;
@@ -29,20 +95,32 @@
       & > img {
         transform: none;
       }
-      & .bl_hero_slide_ttl {
+      & .bl_hero_slide_title {
         opacity: 1;
         transform: translate(-50%, -50%);
       }
     }
   }
 }
-
+@include mq("tabL") {
+  .swiper-slide {
+    box-shadow: 0 8px 40px -10px rgba(0, 0, 0, .8);
+  }
+}
 // ヒーロースライダー
 .bl_hero {
+  padding-top: $navHeight; /* 固定ヘッダーにコンテンツが被らないよう調整 */
+  overflow: hidden;
+
+@extend .hp_pbLg;
+
+  &_inner {
+    overflow: visible;
+  }
   // スライド
   &_slide {
     position: relative;
-    &_ttl {
+    &_title {
       opacity: 0;
       position: absolute;
       top: 50%;
@@ -101,19 +179,19 @@
 // -------------------------------
 // アニメーションテキスト
 .bl_animationTxt,
-.bl_tweenAnimationTxt {
+.bl_gsapAnimationTxt {
   opacity: 0;
   &_char {
     display: inline-block;
     opacity: 0;
   }
-  &.bl_animationTxt_view {
+  &.js_inView {
     opacity: 1;
   }
 }
 
 .bl_animationTxt {
-  &.bl_animationTxt_view {
+  &.js_inView {
     .bl_animationTxt_char {
       @include animation(
       $name: kf_animate_chars,
@@ -141,8 +219,209 @@
 }
 
 // -------------------------------
-// 背景
-.img-bg50 {
-  height: 200px;
-  background-repeat: no-repeat;
+// travel
+.bl_travel {
+  @extend .hp_mbLg;
+  &_inner {
+    position: relative; /* ローカルスタックコンテキストの形成 */
+    z-index: 0; /* ローカルスタックコンテキストの形成 */
+    padding: 15px;
+    background-color: $cBgGrey;
+  }
+  &_figure {
+    height: 300px;
+    transition: box-shadow;
+    transition-property: box-shadow;
+    transition-duration: 1ms;
+    transition-timing-function: linear;
+    transition-delay: .8s;
+
+@extend .hp_mbSm;
+
+    &.js_inView {
+      box-shadow: inset 0 0 30px $cBlack;
+    }
+
+    & > img {
+      position: relative; /* ローカルスタックコンテキスト内で影より背面にする */
+      z-index: -10; /* ローカルスタックコンテキスト内で影より背面にする */
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  &_title {
+    position: relative;
+    z-index: 40;
+
+@include p_base(
+    $which: before,
+    $top: 50%,
+    $left: -120px,
+    $content: "",
+    $position: absolute,
+    $width: 100px,
+    $height: 1px,
+    $display: none
+    ) {
+      transform: translateY(-50%) scale(0);
+      transform-origin: right;
+      background-color: $cBlack;
+      transition: transform .3s ease 1.6s;
+    }
+  }
+  &_subTitle {
+    @extend .hp_mbSm;
+  }
+  &_descriptionText {
+    @extend .hp_mbSm;
+  }
+  &_textOuter {
+    @extend .hp_mbSm;
+    &.js_inView {
+      & .bl_travel_title::before {
+        z-index: 40;
+        transform: translateY(-50%);
+      }
+    }
+  }
+}
+@include mq("tab") {
+  .bl_travel {
+    &_inner {
+      justify-content: space-between;
+      padding: 50px;
+    }
+    &_figure,
+    &_textOuter {
+      flex: 0 1 47%;
+    }
+    &_textOuter {
+      display: flex;
+      align-items: flex-end;
+    }
+  }
+}
+@include mq("pc") {
+  .bl_travel {
+    &_inner {
+      padding: 50px 150px;
+    }
+    &_figure {
+      height: 400px;
+    }
+    &_title {
+      &::before {
+        display: block;
+      }
+    }
+    &_description {
+      margin-bottom: 40px;
+    }
+  }
+}
+
+// -------------------------------
+// houses
+.bl_houses {
+  @extend .hp_mbLg;
+
+  &_title {
+    @extend .el_fontLr;
+
+@extend .hp_mbSm;
+  }
+
+  &_btnArea {
+    flex-basis: 100%;
+    text-align: center;
+  }
+}
+@include mq("tab") {
+  .bl_houses {
+    &_item {
+      flex: 0 1 50%;
+      margin-bottom: 60px;
+    }
+  }
+}
+
+// -------------------------------
+// popularTravel
+.bl_popular {
+  &_inner {
+    position: relative;
+
+@include p_base($top: 10%, $height: 90%) {
+      background-color: $cBgGrey;
+    }
+  }
+  &_container {
+    position: relative;
+    z-index: 20;
+
+@extend .hp_pbSm;
+  }
+  &_item {
+    @extend .hp_mbSm;
+  }
+
+  &_figure {
+    position: relative;
+    height: 150px;
+    margin-bottom: 5px;
+    overflow: hidden;
+  }
+  &_img {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  &_btnArea {
+    flex-basis: 100%;
+    text-align: center;
+
+@extend .hp_mbLg;
+  }
+}
+@include mq("tab") {
+  .bl_popular {
+    &_item {
+      flex: 1 1 47%;
+      margin-right: 6%;
+      &:nth-child(2n) {
+        margin-right: 0;
+      }
+    }
+  }
+}
+@include mq("tabL") {
+  .bl_popular {
+    &_item {
+      flex: 1 1 25%;
+      margin-right: 0;
+    }
+    &_figure {
+      height: 335px;
+    }
+  }
+}
+@include mq("pc") {
+  .bl_popular {
+    &_item {
+      flex: 1 1 23.5%;
+      margin-right: 2%;
+      &:nth-child(2n) {
+        margin-right: 2%; /* 打ち消し */
+      }
+      &:nth-child(4n) {
+        margin-right: 0;
+      }
+    }
+  }
 }

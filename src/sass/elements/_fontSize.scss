@@ -1,0 +1,35 @@
+.el_fontSm {
+  font-size: .875rem;
+}
+@include mq("pc") {
+  .el_fontSm {
+    font-size: 1rem;
+  }
+}
+
+.el_fontMd {
+  font-size: 1.062rem;
+}
+@include mq("pc") {
+  .el_fontMd {
+    font-size: 1.187rem;
+  }
+}
+
+.el_fontLr {
+  font-size: 1.062rem;
+}
+@include mq("pc") {
+  .el_fontLr {
+    font-size: 1.437rem;
+  }
+}
+
+.el_fontLg {
+  font-size: 1.562rem;
+}
+@include mq("pc") {
+  .el_fontLg {
+    font-size: 2.25rem;
+  }
+}

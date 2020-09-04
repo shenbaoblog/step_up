@@ -2,6 +2,10 @@
   color: $cRed !important;
 }
 
+.hp_cWineRed {
+  color: $cWineRed !important;
+}
+
 .hp_bold {
   font-weight: bold !important;
 }
@@ -13,7 +17,6 @@
   }
 }
 
-
 // tab以上で存在存在
 .hp_tabExist {
   display: none !important;
@@ -21,5 +24,31 @@
 @include mq("tab") {
   .hp_tabExist {
     display: block !important;
+  }
+}
+
+.hp_mbSm {
+  margin-bottom: 16px !important;
+}
+
+.hp_mbLg {
+  margin-bottom: 80px !important;
+}
+@include mq("pc") {
+  .hp_mbLg {
+    margin-bottom: 150px !important;
+  }
+}
+
+.hp_pbSm {
+  padding-bottom: 16px !important;
+}
+
+.hp_pbLg {
+  padding-bottom: 80px !important;
+}
+@include mq("pc") {
+  .hp_pbLg {
+    padding-bottom: 150px !important;
   }
 }

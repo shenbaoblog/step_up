@@ -1,11 +1,11 @@
 // ----------------------
 // jQuery読み込む
-import "./venders/jquery.min";
+// import "./venders/jquery.min";
 
 // ----------------------
 // 画像遅延読み込み
-import "./venders/lazyload.min";
-$("img.js_lazyLoad").lazyload({});
+// import "./venders/lazyload.min";
+// $("img.js_lazyLoad").lazyload({});
 
 // ----------------------
 // ポリフィル（object-fit）
@@ -14,35 +14,78 @@ objectFitImages();
 
 // ----------------------
 // ポリフィル（sticky)
-import Stickyfill from "stickyfilljs";
-// ナビ
-const ly_navigation_sticky = document.querySelectorAll(".ly_navigation");
-Stickyfill.add(ly_navigation_sticky);
-// ヘッダー
-const ly_header_sticky = document.querySelectorAll(".ly_header");
-Stickyfill.add(ly_header_sticky);
+// import Stickyfill from "stickyfilljs";
+// // ナビ
+// const ly_navigation_sticky = document.querySelectorAll(".ly_navigation");
+// Stickyfill.add(ly_navigation_sticky);
+// // ヘッダー
+// const ly_header_sticky = document.querySelectorAll(".ly_header");
+// Stickyfill.add(ly_header_sticky);
 
 // ----------------------
 // 横スクロール
-import ScrollHint from "scroll-hint"; // scroll-hint
-new ScrollHint(".js_sideScroll", {
-  suggestiveShadow: true,
-  i18n: {
-    scrollable: "横スクロール可能",
-  },
-});
+// import ScrollHint from "scroll-hint"; // scroll-hint
+// new ScrollHint(".js_sideScroll", {
+//   suggestiveShadow: true,
+//   i18n: {
+//     scrollable: "横スクロール可能",
+//   },
+// });
 
 // ----------------------
 // スワイパー
 import "./venders/swiper.min";
-import "./functions/swiper";
-// ↓後でこっちに改善
+// import "./functions/swiper";
+class HeroSlider {
+  constructor(el) {
+    this.el = el;
+    this.swiper = this._initSwiper();
+  }
+
+  _initSwiper() {
+    return new Swiper(this.el, {
+      // Optional parameters
+      // direction: "vertical",
+      loop: true,
+      grabCursor: true,
+      effect: "coverflow",
+      centeredSlides: true,
+      slidesPerView: 1,
+      speed: 1000,
+      breakpoints: {
+        1024: {
+          slidesPerView: 2,
+        },
+      },
+    });
+  }
+
+  start(options = {}) {
+    options = Object.assign(
+      {
+        delay: 4000,
+        disableOnInteraction: false,
+      },
+      options
+    );
+    this.swiper.params.autoplay = options;
+    this.swiper.autoplay.start();
+  }
+
+  stop() {
+    this.swiper.autoplay.stop();
+  }
+}
+
+// const hero = new HeroSlider(".swiper-container");
+// hero.start();
+// ↓後でこっちに改善したい
 // import swiper from "./functions/swiper_webpack";
 // swiper();
 
 // ----------------------
 // テキストアニメーション
-import "./functions/textAnimation";
+// import "./functions/textAnimation";
 // ----------------------
 // CSSを使用したテキストアニメーション（文字数制限あり）
 class textAnimation {
@@ -67,20 +110,19 @@ class textAnimation {
     }, "");
   }
   animate() {
-    this.DOM.el.classList.add("bl_animationTxt_view");
+    this.DOM.el.classList.add("js_inView");
   }
 }
-
 // ----------------------
 // gsapを使用したテキストアニメーション（文字数制限なし）：継承
 import gsap, { Back } from "gsap";
-class tweenTextAnimation extends textAnimation {
+class gsapTextAnimation extends textAnimation {
   constructor(el) {
     super(el);
     this.DOM.chars = this.DOM.el.querySelectorAll(".bl_animationTxt_char");
   }
   animate() {
-    this.DOM.el.classList.add("bl_animationTxt_view");
+    this.DOM.el.classList.add("js_inView");
     this.DOM.chars.forEach((c, i) => {
       gsap.to(c, 0.6, {
         ease: Back.easeOut,
@@ -94,62 +136,11 @@ class tweenTextAnimation extends textAnimation {
 }
 
 // ----------------------
-// 文字列をspanに分割し、各spanにbl_animationTxt_charを付与
-document.addEventListener("DOMContentLoaded", function() {
-  // const btnAnimation = document.querySelector("#id_btnAnimation");
-  // const ta = new textAnimation(".js_animationTxt");
-  // ta.animate();
-  // btnAnimation.addEventListener("click", ta.animate.bind(ta));
+// スクロールオブザーバー
+// import "./functions/scrollObserver";
 
-  // // ----------------------
-  // // IntersectionObserver（インターセクションオブザーバー）
-
-  // // IntersectionObserverで監視する要素をすべて抽出
-  // const els = document.querySelectorAll(".js_intersectionObserver");
-  // // IntersectionObserverのコールバック関数（entries：すべての監視対象）
-  // const cb = function(entries, observer) {
-  //   // 各監視対象ごとにループ（entry：各監視対象）
-  //   entries.forEach((entry) => {
-  //     //監視対象がビューポートの内側に入ってきた場合
-  //     if (entry.isIntersecting) {
-  //       console.log("in view");
-  //       // 監視対象要素をspanで分割し、classを付与
-  //       const tweenTA = new tweenTextAnimation(entry.target);
-  //       // 監視対象要素をアニメーションさせる
-  //       tweenTA.animate();
-  //       // entry.target.classList.add("js_intersectionObserver_inView");
-  //       // 監視対象から除外
-  //       observer.unobserve(entry.target);
-  //       // observer.unobserve(entry.target);
-  //     } else {
-  //       console.log("out view");
-  //       // entry.target.classList.remove("js_intersectionObserver_inView");
-  //     }
-  //   });
-  //   // alert("IntersectionObserver");
-  // };
-  // const options = {
-  //   root: null,
-  //   rootMargin: "0px",
-  //   threshold: 0,
-  // };
-  // // IntersectionObserverをインスタンス化
-  // const io = new IntersectionObserver(cb, options);
-  // // elsに格納されいてるすべての要素を監視
-  // els.forEach(
-  //   (el) => io.observe(el) // ループごとに各要素の監視スタート
-  // );
-  // // ----------------------
-
-  const cb = function(el, isIntersecting) {
-    if (isIntersecting) {
-      const ta = new tweenTextAnimation(el);
-      ta.animate();
-    }
-  };
-  const so = new ScrollObserver(".bl_tweenAnimationTxt", cb);
-});
-
+// ポリフィル（IntersectionObserver）
+import "intersection-observer";
 class ScrollObserver {
   constructor(els, cb, options) {
     this.els = document.querySelectorAll(els);
@@ -157,9 +148,11 @@ class ScrollObserver {
       root: null,
       rootMargin: "0px",
       threshold: 0,
+      once: true,
     };
     this.cb = cb;
     this.options = Object.assign(defaultOptions, options);
+    this.once = this.options.once;
     this._init();
   }
   _init() {
@@ -169,33 +162,193 @@ class ScrollObserver {
       entries.forEach((entry) => {
         //監視対象がビューポートの内側に入ってきた場合
         if (entry.isIntersecting) {
-          // 監視対象要素をspanで分割し、classを付与
-          // const tweenTA = new tweenTextAnimation(entry.target);
-          // 監視対象要素をアニメーションさせる
-          // tweenTA.animate();
-          // entry.target.classList.add("js_intersectionObserver_inView");
-          // 監視対象から除外
+          // クラスの外部で宣言したコールバック関数実行
           this.cb(entry.target, true);
-          observer.unobserve(entry.target);
+          // 一度発火したら、監視対象から除外
+          // console.log(this.once);
+          if (this.once) {
+            // 監視対象から除外
+            observer.unobserve(entry.target);
+          }
         } else {
+          // クラスの外部で宣言したコールバック関数実行
           this.cb(entry.target, false);
-          // entry.target.classList.remove("js_intersectionObserver_inView");
         }
       });
       // alert("IntersectionObserver");
     };
     // IntersectionObserverをインスタンス化
-    const io = new IntersectionObserver(callback.bind(this), this.options);
+    this.io = new IntersectionObserver(callback.bind(this), this.options);
+    // 100msごとにスクロールの値を監視（ポリフィルによるIE対策）
+    this.io.POLL_INTERVAL = 100;
     // elsに格納されいてるすべての要素を監視
     this.els.forEach(
-      (el) => io.observe(el) // ループごとに各要素の監視スタート
+      (el) => this.io.observe(el) // ループごとに各要素の監視スタート
     );
+  }
+  // 監視している対象の開放
+  destroy() {
+    this.io.disconnect();
   }
 }
 
+// -------------------------------
+// ドロワー
+class drawerMenu {
+  constructor() {
+    this.DOM = {};
+    this.DOM.btn = document.querySelector(".bl_drawer_btn");
+    this.DOM.container = document.querySelector(".ly_container");
+    this.DOM.cover = document.querySelector(".bl_drawerMenuCover");
+    this.eventType = this._getEventType();
+    this._addEvent();
+  }
+
+  _getEventType() {
+    return window.ontouchstart ? "touchstart" : "click";
+  }
+  _toggle() {
+    this.DOM.container.classList.toggle("js_drawerOpen__container");
+  }
+  _addEvent() {
+    this.DOM.btn.addEventListener(this.eventType, this._toggle.bind(this));
+    this.DOM.cover.addEventListener(this.eventType, this._toggle.bind(this));
+  }
+}
+// new drawerMenu();
+
+// -------------------------------
+// ページローダー
+import "./venders/pace.min";
+
 // ----------------------
-import "./functions/toTop"; // トップへ戻るボタンを途中表示
-import "./functions/autoCloseDrawer"; // ドロワーをクリックで自動クローズ
-import "./functions/currentScroll"; // カレントスクロール
-import "./functions/smoothScroll"; // スムーススクロール
-import "./functions/accordion"; // アコーディオンimport { reduce } from "core-js/fn/array";
+// import "./functions/toTop"; // トップへ戻るボタンを途中表示
+// import "./functions/autoCloseDrawer"; // ドロワーをクリックで自動クローズ
+// import "./functions/currentScroll"; // カレントスクロール
+// import "./functions/smoothScroll"; // スムーススクロール
+// import "./functions/accordion"; // アコーディオンimport { reduce } from "core-js/fn/array";
+
+class Main {
+  constructor() {
+    this.header = document.querySelector(".bl_header");
+    this.sides = document.querySelectorAll(".bl_side");
+    this._observers = [];
+    this._init();
+  }
+
+  set observers(val) {
+    this._observers.push(val);
+  }
+
+  get observers() {
+    return this._observers;
+  }
+
+  _init() {
+    new drawerMenu();
+    this.hero = new HeroSlider(".swiper-container");
+    Pace.on("done", this._paceDone.bind(this));
+    // this._scrollInit();
+  }
+
+  _paceDone() {
+    this._scrollInit();
+  }
+
+  _destroyObservers() {
+    this.observers.forEach((ob) => {
+      console.log(ob);
+      ob.destroy();
+    });
+  }
+
+  destroy() {
+    this._destroyObservers();
+  }
+
+  _scrollInit() {
+    this.observers = new ScrollObserver(
+      ".js_navTrigger",
+      this._navAnimation.bind(this),
+      {
+        once: false,
+      }
+    );
+    this.observers = new ScrollObserver(
+      ".bl_coverSlide",
+      this._inViewAnimation,
+      {}
+    );
+    this.observers = new ScrollObserver(
+      ".bl_appear",
+      this._inViewAnimation,
+      {}
+    );
+    this.observers = new ScrollObserver(
+      ".bl_gsapAnimationTxt",
+      this._textAnimation.bind(this),
+      {}
+    );
+    this.observers = new ScrollObserver(
+      ".bl_mainContent",
+      this._sideTextAnimation.bind(this),
+      { once: false, rootMargin: "-300px 0px" }
+    );
+    this.observers = new ScrollObserver(
+      ".swiper-container",
+      this._toggleSlideAnimation.bind(this),
+      {
+        once: false,
+      }
+    );
+  }
+
+  // ヒーロースライダー
+  _toggleSlideAnimation(el, isIntersecting) {
+    if (isIntersecting) {
+      this.hero.start();
+    } else {
+      this.hero.stop();
+    }
+  }
+
+  // ヘッダートリガー検知
+  _navAnimation(el, isIntersecting) {
+    if (isIntersecting) {
+      this.header.classList.remove("js_triggered");
+    } else {
+      this.header.classList.add("js_triggered");
+    }
+  }
+
+  // カバースライドのスクロール検知
+  _inViewAnimation(el, isIntersecting) {
+    if (isIntersecting) {
+      el.classList.add("js_inView");
+    } else {
+      el.classList.remove("js_inView");
+    }
+  }
+
+  // アニメーションテキストのスクロール検知
+  _textAnimation(el, isIntersecting) {
+    if (isIntersecting) {
+      const ta = new gsapTextAnimation(el);
+      ta.animate();
+    }
+  }
+
+  // サイドテキストアニメーションのスクロール検知
+  _sideTextAnimation(el, isIntersecting) {
+    if (isIntersecting) {
+      this.sides.forEach((side) => side.classList.add("js_inView"));
+    } else {
+      this.sides.forEach((side) => side.classList.remove("js_inView"));
+    }
+  }
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+  const main = new Main();
+  // main.destroy();
+});

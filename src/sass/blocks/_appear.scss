@@ -1,6 +1,6 @@
 $pattern: (
-  "up": translateY(6px),
-  "down": translateY(-6px),
+  "up": translateY(40px),
+  "down": translateY(-40px),
   "left": translateX(40px),
   "right": translateX(-40px),
 );
@@ -16,9 +16,9 @@ $pattern: (
 .bl_appear {
   .bl_appear_item {
     opacity: 0;
-    transition: 0.8s;
+    transition: .8s;
   }
-  &.js_appear_view {
+  &.js_inView {
     .bl_appear_item {
       opacity: 1;
       transform: translateY(0);
